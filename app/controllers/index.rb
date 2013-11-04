@@ -1,37 +1,39 @@
-get '/' do
-  # render home page
- #TODO: Show all users if user is signed in
+enable :sessions
+use Rack::Flash
+
+
+get '/events' do
+  @events = Event.all
   erb :index
 end
 
-#----------- SESSIONS -----------
-
-get '/sessions/new' do
-  # render sign-in page 
-  erb :sign_in
+get '/events/:id/show' do |id|
+  @event = Event.find(id)
+  erb :event_show
 end
 
-post '/sessions' do
+get '/events/new' do
+  erb :create_event
+end
 
-  # sign-in
+post '/events/create' do
+  @event = Event.new(params[:event])
+  if @event.save # is this checking is it can save? similar to rescue?
+    redirect '/events'
+  else
+    flash[:error] = @event.errors.values.join("<br>")
+    redirect '/events/new'
+  end
+
 end
 
 
+ # => #<ActiveModel::Errors:0x007f8ff4859e28 @base=#<Event id: nil, organizer_name: nil, organizer_email: nil, title: nil, date: nil>, @messages={:date=>["Date cannot be blank, Event not saved"], :title=>["Title cannot be blank, Event not saved"], :organizer_name=>["Organizer Name cannot be blank, Event not saved"], :organizer_email=>["Invalid Email"]}>
 
-delete '/sessions/:id' do
+# event.errors.messages.values
 
-  # sign-out  - use a partial with a form (no AJAX)
-end
+#### DO NOT PUT ANYTHING BELOW THIS LINE ####
 
-#----------- USERS -----------
-
-get '/users/new' do
-
-  # render sign-up page
-  erb :sign_up
-end
-
-post '/users' do
-
-  # sign-up a new user
+get '/*' do
+  redirect '/events'
 end

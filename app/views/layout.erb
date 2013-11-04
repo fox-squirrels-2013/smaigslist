@@ -1,28 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <link rel="stylesheet" href="/css/normalize.css">
-  <link rel="stylesheet" href="/css/application.css">
+  <head>
+    <link rel="stylesheet" href="/css/normalize.css">
+    <link rel="stylesheet" href="/css/application.css">
 
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-  <script src="/js/application.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="/js/application.js"></script>
 
-  <title></title>
-</head>
-<body>
+    <title></title>
+  </head>
+  <body>
 
-  <nav>
-
-    <div class="brand"><a href="/">User Authentication</a></div>
-
+    <nav>
     <ul>
-      <!-- TODO: Implement Sign_Out. Render a delete form in a partial if there is a current user -->
-        <li><a href="/sessions/new">Sign In</a></li>
-        <li><a href="/users/new">Sign Up</a></li>
-      </ul>
+      <li><a href="/events/new">Create Event</a></li>
+      <li><a href="/">All events</a></li>
+    </ul>
+    </nav>
 
-  </nav>
+    <%= flash[:notice] %>
+    <%= flash[:error] %>
 
-  <%= yield %>
-</body>
+    <div class="container">
+      <%= yield %>
+    </div>
+  </body>
 </html>

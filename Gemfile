@@ -14,8 +14,12 @@ gem 'activesupport'
 gem 'activerecord'
 
 gem 'rake'
+gem 'bcrypt-ruby'
+
 
 gem 'shotgun'
+
+gem 'rack-flash3'
 
 group :test do
   gem 'shoulda-matchers'

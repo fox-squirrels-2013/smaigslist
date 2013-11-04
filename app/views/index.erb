@@ -1,6 +1,5 @@
-<div class="container">
-
-  <%# TODO: 
-  1. If user is not signed in - display "Welcome".
-  2. If user is signed in then  display all users %>
-</div>
+  <ul>
+    <% @events.each do |event| %>
+      <li><a href="/events/<%=event.id%>/show"><%=event.date%></a> - <%=event.title%></li>
+    <% end %>
+  </ul>
