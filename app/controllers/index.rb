@@ -21,7 +21,11 @@ post '/events/create' do
   if @event.save # is this checking is it can save? similar to rescue?
     redirect '/events'
   else
-    flash[:error] = @event.errors.values.join("<br>")
+    # flash[:error] = @event.errors.values.join("<br>")
+    flash[:title]           = @event.errors[:title].first
+    flash[:organizer_name]  = @event.errors[:organizer_name].first
+    flash[:organizer_email] = @event.errors[:organizer_email].first
+    flash[:date]            = @event.errors[:date].first
     redirect '/events/new'
   end
 
