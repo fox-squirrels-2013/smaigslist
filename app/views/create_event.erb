@@ -1,31 +1,31 @@
 <div id="create_event">
     <h1>Create New Event</h1>
 
-  <form id="create_event_form" action="/events/create" method="post">
+  <form id="create_event_form" action="/events/new" method="post">
 
     <p>
-      <input class="input_form" type="text" name="event[title]"> Title
+      <input class="input_form" type="text" name="event[title]" value="<%= session[:saved_info][:title] if session[:saved_info] %>"> Title
         <span class="flash_error">
           <%= flash[:title] %>
         </span>
     </p>
 
     <p>
-      <input class="input_form" type="text" name="event[organizer_name]"> Organizer Name
+      <input class="input_form" type="text" name="event[organizer_name]" value="<%= session[:saved_info][:organizer_name] if session[:saved_info] %>"> Organizer Name
         <span class="flash_error">
           <%= flash[:organizer_name] %>
         </span>
     </p>
 
     <p>
-      <input class="input_form" type="text" name="event[organizer_email]"> Organizer Email
+      <input class="input_form" type="text" name="event[organizer_email]" value="<%= session[:saved_info][:organizer_email] if session[:saved_info] %>"> Organizer Email
         <span class="flash_error">
           <%= flash[:organizer_email] %>
         </span>
     </p>
 
     <p>
-      <input class="input_form" type="date" name="event[date]"> Date
+      <input class="input_form" type="date" name="event[date]" value="<%= session[:saved_info][:date] if session[:saved_info] %>"> Date
         <span class="flash_error">
           <%= flash[:date] %>
         </span>
