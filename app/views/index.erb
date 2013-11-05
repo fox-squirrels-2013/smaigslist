@@ -1,5 +1,9 @@
-  <ul>
-    <% @events.each do |event| %>
-      <li><a href="/events/<%=event.id%>/show"><%=event.date%></a> - <%=event.title%></li>
-    <% end %>
-  </ul>
+<p id="cat_helper">click on a category to view posts</p>
+
+
+<ul>
+<% @categories.each do |category| %>
+    <li><a href="/categories/<%= category.id %>"><%= category.name %></li>
+<% end %>
+</ul>
+

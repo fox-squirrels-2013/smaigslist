@@ -2,4 +2,4 @@
 
 ### A shitty Craigslist knockoff.
 
-### Check it out, dude.
+Check it out, dude.

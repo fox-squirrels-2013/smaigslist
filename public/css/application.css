@@ -1,6 +1,27 @@
 .container {
-  margin: 20px auto;
-  width: 800px;
+  margin: auto;
+  width: 50%;
   padding: 0px 20px 20px 20px;
-  border: 1px dotted black;
+}
+
+
+header {
+  text-align: center;
+  font-size: 50px;
+}
+
+/*li {
+  width: 100%;
+  margin: 0px 50px 0px 50px;
+  display: inline;
+}*/
+
+#cat_helper {
+  text-align: center;
+}
+
+#crumbs {
+  margin: auto;
+  width: 50%;
+  padding: 0px 20px 20px 20px;
 }

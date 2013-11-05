@@ -2,20 +2,34 @@ enable :sessions
 use Rack::Flash
 
 
-get '/events' do
-  @events = Event.all
+
+
+get '/categories' do
+  @categories = Category.all
+  track(:clear)
+
   erb :index
 end
 
-get '/events/:id/show' do |id|
-  @event = Event.find(id)
-  erb :event_show
+get '/categories/:id' do
+  @category = Category.find(params[:id])
+  @posts = @category.posts
+  track(:category, @category.id)
+
+  erb :cat_posts
 end
 
-get '/events/new' do
-  ### need to get session or params info here
-  erb :create_event
+
+get '/posts/:id' do
+  @post = Post.find(params[:id])
+  track(:post, @post.id)
+
+  erb :post
 end
+
+
+
+
 
 post '/events/new' do
   @event = Event.new(params[:event])
@@ -32,6 +46,6 @@ post '/events/new' do
   end
 end
 
-get '/*' do
-  redirect '/events'
-end
+# get '/*' do
+#   redirect '/categories'
+# end

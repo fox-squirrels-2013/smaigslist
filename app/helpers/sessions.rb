@@ -6,5 +6,18 @@ helpers do
     session[:saved_info][:organizer_email] = params[:organizer_email]
     session[:saved_info][:date]            = params[:date]
   end
-end
 
+
+  def track(level, id = nil)
+    case level
+    when :clear
+      flash[:breadcrumbs] = ''
+    when :category
+      c = Category.find(id)
+      flash[:breadcrumbs] = "<a href='/categories/<%= c.id %>'>#{c.name}</a>"
+    when :post
+      p = Post.find(id)
+      flash[:breadcrumbs] = "#{p.category.name} >> #{p.title}"
+    end
+  end
+end

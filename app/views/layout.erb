@@ -11,14 +11,11 @@
   </head>
   <body>
 
-    <nav>
-    <ul>
-      <li><a href="/events/new">Create Event</a></li>
-      <li><a href="/">All events</a></li>
-    </ul>
-    </nav>
+  <header>
+    <h1>SMAIGSLIST!</h1>
+  </header>
 
-    <%= flash[:notice] %>
+    <p id="crumbs"><%= flash[:breadcrumbs] %></p>
 
     <div class="container">
       <%= yield %>

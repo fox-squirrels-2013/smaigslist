@@ -1,9 +1,15 @@
 require 'faker'
 
-10.times do |i|
-  Event.create({
-    :date => Date.today + i,
-    :title => "Event #{i}",
-    :organizer_name => "Organizer #{i}",
-    :organizer_email => "organizer_#{i}@example.com" })
+3.times do |i|
+  Category.create! name: Faker::Lorem.word
 end
+
+10.times do |i|
+  Post.create category_id:   Category.all.sample.id,
+              title:         Faker::Lorem.word,
+              description:   Faker::Lorem.word * 2,
+              price:         rand(100..1000),
+              contact_email: Faker::Internet.email
+end
+
+
