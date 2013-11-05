@@ -1,5 +1,4 @@
 helpers do
-
   def save_form_info(params)
     session[:saved_info] = {}
     session[:saved_info][:title]           = params[:title]
@@ -7,7 +6,5 @@ helpers do
     session[:saved_info][:organizer_email] = params[:organizer_email]
     session[:saved_info][:date]            = params[:date]
   end
-
-
 end
 
