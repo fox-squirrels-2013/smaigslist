@@ -1,9 +1,10 @@
-<div id="create_post">
-    <h1>create new post</h1>
+<div id="edit_post">
+    <h1>edit post</h1>
 
-  <form id="create_post_form" action="/posts/new" method="post">
+  <form id="edit_post_form" action="/posts/<%= @post.id %>" method="post">
+    <input type="hidden" name="_method" value="put">
 
-    <p>Category Name: <strong><%= @category %></strong></p>
+    <p>Category Name: <strong><%= @post.category.name %></strong></p>
     <p><input class="input_form" type="text" name="post[title]"> Title</p>
     <p><input class="input_form" type="text" name="post[description]"> Description</p>
     <p><input class="input_form" type="text" name="post[price]"> Price</p>

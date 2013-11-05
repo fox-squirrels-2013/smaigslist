@@ -33,8 +33,20 @@ get '/post/new' do
 end
 
 post '/posts/new' do
-  p = Post.create! params[:post]
+  p = Post.create!(params[:post].merge({category_id: session[:category_id]}))
+  host = (request.url.split('/') - request.path.split('/')).join('//')
+  path = "/posts/#{p.id}/edit/#{p.edit_key}"
+  flash[:edit_link] = host + path
   redirect "posts/#{p.id}"
+end
+
+get '/posts/:id/edit/:key' do
+  @post = Post.find(params[:id])
+  if params[:key] == @post.edit_key
+    erb :edit_post
+  else
+    redirect '/categories'
+  end
 end
 
 post '/events/new' do

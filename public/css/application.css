@@ -22,9 +22,14 @@ header {
 
 #crumbs {
   margin: auto;
-  width: 50%;
+  width: 610px;
 }
 
 #create_post a {
   float: right;
+}
+
+#edit_link {
+  background-color: blue;
+  color: #fff;
 }
