@@ -1,0 +1,38 @@
+<div id="create_post">
+    <h1>create new post</h1>
+
+  <form id="create_post_form" action="/posts/new" method="post">
+
+    <p>Category Name: <strong><%= @category %></strong></p>
+
+    <p>
+      <input class="input_form" type="text" name="post[title]" value="<%= session[:saved_info][:title] if session[:saved_info] %>"> Title
+        <span class="flash_error">
+          <%= flash[:title] %>
+        </span>
+    </p>
+
+    <p>
+      <input class="input_form" type="text" name="post[description]" value="<%= session[:saved_info][:organizer_name] if session[:saved_info] %>"> Description
+        <span class="flash_error">
+          <%= flash[:organizer_name] %>
+        </span>
+    </p>
+
+    <p>
+      <input class="input_form" type="text" name="post[price]" value="<%= session[:saved_info][:organizer_email] if session[:saved_info] %>"> Price
+        <span class="flash_error">
+          <%= flash[:organizer_email] %>
+        </span>
+    </p>
+
+    <p>
+      <input class="input_form" type="text" name="post[contact_email]" value="<%= session[:saved_info][:date] if session[:saved_info] %>"> Contact Email
+        <span class="flash_error">
+          <%= flash[:date] %>
+        </span>
+    </p>
+
+    <input class="submit_button" id="submit_new_post" type="submit">
+  </form>
+</div>

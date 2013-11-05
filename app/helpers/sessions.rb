@@ -10,14 +10,18 @@ helpers do
 
   def track(level, id = nil)
     case level
-    when :clear
-      flash[:breadcrumbs] = ''
+    when :clear then insert = "<a href='/categories'>all</a>"
     when :category
       c = Category.find(id)
-      flash[:breadcrumbs] = "<a href='/categories/<%= c.id %>'>#{c.name}</a>"
+      insert = "<a href='/categories'>all</a>" + "&nbsp; >> &nbsp;" +
+               "<a href='/categories/#{c.id}'>#{c.name}</a>"
     when :post
       p = Post.find(id)
-      flash[:breadcrumbs] = "#{p.category.name} >> #{p.title}"
+      c = p.category
+      insert = "<a href='/categories'>all</a>" + "&nbsp; >> &nbsp;" +
+               "<a href='/categories/#{c.id}'>#{c.name}</a>" +
+               "&nbsp; >> &nbsp;" +  "<a href='/posts/#{p.id}'>#{p.title}</a>"
     end
+    session[:breadcrumbs] = insert
   end
 end

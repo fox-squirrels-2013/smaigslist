@@ -15,7 +15,7 @@
     <h1>SMAIGSLIST!</h1>
   </header>
 
-    <p id="crumbs"><%= flash[:breadcrumbs] %></p>
+    <p id="crumbs"><%= session[:breadcrumbs] %></p>
 
     <div class="container">
       <%= yield %>

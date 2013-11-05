@@ -1,7 +1,7 @@
-<h1><%= @post.title %></h1>
+<h1><strong>Title:</strong> <%= @post.title %></h1>
 
-</p><%= @post.description %></p>
+</p><strong>Description:</strong> <%= @post.description %></p>
 
-</p><%= @post.price %> cents</p>
+</p><strong>Price:</strong> $<%= @post.price / 100%>.<%= @post.price % 100%> </p>
 
-</p><a href="mailto:<%= @post.contact_email %>"><%= @post.contact_email %></a></p>
+</p><strong>Contact:</strong> <a href="mailto:<%= @post.contact_email %>"><%= @post.contact_email %></a></p>

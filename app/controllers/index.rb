@@ -14,8 +14,8 @@ end
 get '/categories/:id' do
   @category = Category.find(params[:id])
   @posts = @category.posts
+  session[:category_id] = @category.id
   track(:category, @category.id)
-
   erb :cat_posts
 end
 
@@ -23,13 +23,19 @@ end
 get '/posts/:id' do
   @post = Post.find(params[:id])
   track(:post, @post.id)
-
   erb :post
 end
 
 
+get '/post/new' do
+  @category = Category.find(session[:category_id]).name
+  erb :new_post
+end
 
-
+post '/posts/new' do
+  p = Post.create! params[:post]
+  redirect "posts/#{p.id}"
+end
 
 post '/events/new' do
   @event = Event.new(params[:event])
